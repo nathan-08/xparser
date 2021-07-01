@@ -27,12 +27,15 @@ class Option:
 class Event:
     def __init__(self,
             options, flags,
-            name='default evnt', text='default evnt txt',
+            name, text,
+            scene, pool
             ):
         self.options = options if len(options)>0 else list()
         self.flags = flags if len(flags)>0 else list()
         self.name = name
         self.text = text
+        self.scene = scene
+        self.pool = pool
 
     def __str__(self):
         return f'{self.name}, {self.text}, opts: {[opt.name for opt in self.options]}'
@@ -122,6 +125,8 @@ def parse_opt(f):
 def parse_event(f):
     name = ''
     text = ''
+    scene = None
+    pool = None
     options = []
     flags = []
     while(line := f.readline()):
@@ -129,6 +134,10 @@ def parse_event(f):
         line = line.strip()
         if starts_with(line, 'name'):
             name = parse_string(f, line)
+        elif starts_with(line, 'scene'):
+            scene = parse_string(f, line)
+        elif starts_with(line, 'pool'):
+            pool = parse_string(f, line)
         elif starts_with(line, 'text'):
             text = parse_string(f, line)
         elif starts_with(line, 'flag'):
@@ -138,7 +147,7 @@ def parse_event(f):
         elif starts_with(line, 'event'):
             f.seek(f.tell() - linelen)
             break
-    return Event(options, flags, name, text)
+    return Event(options, flags, name, text, scene, pool)
 
 def parse(filename):
     events = []
@@ -154,7 +163,15 @@ def makeXML(events, filename='out.xml'):
     with open(filename, 'w') as outfile:
         outfile.write('<events>\n')
         for event in events:
-            outfile.write(f'\t<event Name="{event.name}">\n')
+            openTag = '<event'
+            if event.name:
+                openTag += f' Name="{event.name}"'
+            if event.scene:
+                openTag += f' Scene="{event.scene}"'
+            if event.pool:
+                openTag += f' Pool="{event.pool}"'
+            openTag += '>'
+            outfile.write(f'\t{openTag}\n')
             outfile.write(f'\t\t<text>{event.text}</text>\n')
             for flag in event.flags:
                 openTag = '<flag>' if not flag.set else f'<flag Set="{flag.set}">'
@@ -201,6 +218,8 @@ event
       line2
       line3'
     flag='opt 1 flag'
+    scene='scene attr'
+    pool='pool attr'
     opt
         name='yes'
         text='yes opt text'
