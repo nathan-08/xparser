@@ -45,11 +45,16 @@ def starts_with(line, word):
 
 def parse_string(f, line, strOpen=False):
     result = ''
+    escape_flag = False
     for ch in line:
-        if ch == "'":
+        if escape_flag:
+            result += ch
+            escape_flag = False
+        elif ch == "\\":
+            escape_flag = True
+        elif ch == "'":
             strOpen = not strOpen
-            continue
-        if strOpen:
+        elif strOpen:
             result += ch
     if strOpen:
         result += parse_string(f, ' ' + f.readline().strip(), True)

@@ -1,0 +1,24 @@
+event
+    name='testing escape sequence: \''
+    text='Would you like to outsource developers from overseas?'
+    scene='3'
+    opt
+        name='Yes'
+        outcome
+            text='Yes'
+            mod
+                id='Employee Morale'
+                diff='-5'
+            mod
+                id='Revenue'
+                diff='5'
+    opt
+        name='No'
+        outcome
+            text='No'
+            mod
+                id='Employee Morale'
+                diff='5'
+            mod
+                id='Revenue'
+                diff='-5'
