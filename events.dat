@@ -1,0 +1,978 @@
+event
+  name='I\'ve Fallen and Can\'t Get Up'
+  text='An employee has filed a complaint against the company for an injury that happened on company property. They claim unsafe conditions caused them to fall while heading to their cubicle.'
+  scene='1'
+  opt
+    name='Pay the claim'
+    outcome
+      text='You take care of your people around here. Fighting the claim would only cause more trouble within the company.'
+      mod
+        id='Revenue'
+        diff='-5'
+      mod
+        id='Morale'
+        diff='5'
+   opt
+     name='Fight the claim'
+     outcome
+       prob='0.5'
+       text='Just paying up could set a bad precedent for future claims. You successfully fight the claim at the expense of your employees\' happiness.'
+       mod
+         id='Morale'
+         diff='-5'
+     outcome
+       prob='0.5'
+       text='Just paying up could set a bad precedent for future claims. You fail to fight the claim and have to pay up anyways.'
+       mod
+         id='Revenue'
+         diff='-5'
+       mod
+         id='Morale'
+         diff='-5'
+event
+  name='Copyright Claim'
+  text='Another company has come after you for possible theft of their copyrighted software in your latest product. They\'re giving you the choice to pull it off the market or be taken to court.' 
+  scene='1'
+  opt
+    name='Pull the product'
+    outcome
+      text='You decide the fight isn\'t worth it and pull the product to remove the contested software.'
+      mod
+        id='Revenue'
+        diff='-5'
+   opt
+     name='Go to court'
+     outcome
+       prob='0.7'
+       text='You decide to fight the claim and win easily. They were trying to scare you into an easy payday.'
+       mod
+         id='Legality'
+         diff='5'
+     outcome
+       prob='0.3'
+       text='You decide to fight the claim and lose. Apparently one of your developers knowingly used their software without telling anyone.'
+       mod
+         id='Revenue'
+         diff='-5'
+       mod
+         id='Morale'
+         diff='-5'
+event
+  name='Failure to Deliver'
+  text='The deadline has passed on a product the company agreed to create for a high-profile customer. They\'re angry and demand to be reimbursed for the money they put towards its development as per the terms of the agreement; however, the agreement was only verbal in nature.'
+  scene='1'
+  opt
+    name='Ask for an extension'
+    outcome
+      text='They\'re a longtime customer of the company and open to reason. A new agreement has been made extending the deadline by 1 month.'
+      mod
+        id='Legality'
+        diff='5'
+      mod
+        id='Reputation'
+        diff='5'
+   opt
+     name='Tell them: ”It\'ll be ready when it\'s ready”'
+     outcome
+       text='Development always has some issues, and they\'ll just have to deal with that.'
+       mod
+         id='Reputation'
+         diff='-5'
+       mod
+         id='Morale'
+         diff='5'
+   opt
+    name='Keep the money and cut ties with the customer'
+    outcome
+      text='The agreement wasn\'t legally binding. You decide the development is too much trouble and shut down the project much to the customer\'s rage.'
+      mod
+        id='Revenue'
+        diff='5'
+      mod
+        id='Reputation'
+        diff='-5'
+      mod
+        id='Legality'
+        diff='-5'
+event
+  name='Old Friend?'
+  text='A former co-founder of the company has reappeared. He\'s demanding to be put back in as chief operating officer after seeing how profitable the company has become. An agreement was made to buy him out of the company years ago, but the legal paperwork, if it ever existed, has since been lost.'
+  scene='1'
+  opt
+    name='Deny his demands'
+     outcome
+       prob='0.9'
+       text='Regardless of paperwork, he has no grounds to stand on in making such demands.'
+       mod
+         id='Morale'
+         diff='5'
+     outcome
+       prob='0.1'
+       text='As unbelievable as it seems, he takes you to court and successfully gets himself put back in as COO. The legal battle cost the company greatly.'
+       mod
+         id='Revenue'
+         diff='-5'
+       mod
+         id='Morale'
+         diff='-5'
+   opt
+     name='Fire the current COO'
+     outcome
+       text='You\'d rather not have to deal with a lengthy legal engagement especially since you can\'t find the paperwork from when he left the company.'
+       mod
+         id='Morale'
+         diff='-5'
+event
+  name='Defamation'
+  text='A hotshot journalist has been writing absurd articles about your company that borderline on libel. Your lawyer advises taking them to court but warns that it could drag out for a while.' 
+  scene='1'
+  opt
+    name='Sue them'
+    outcome
+      prob='0.8'
+      text='It\'s important to stand your ground and make an example of them to stop anyone else from doing the same.'
+      mod
+        id='Legality'
+        diff='5'
+    outcome
+      prob='0.2'
+      text='Shockingly, they win the court case. The company takes a heavy hit as their articles get more public attention.'
+      mod
+        id='Revenue'
+        diff='-5'
+      mod
+        id='Reputation'
+        diff='-5'
+   opt
+     name='Pay them off instead'
+     outcome
+       text='Things are resolved quicker when there\'s money involved. No reason to go through a lengthy court process.'
+       mod
+         id='Revenue'
+         diff='-5'
+event
+    name='Problematic Employee'
+    text='An employee named Tim is bullying his coworkers and using discriminatory language. 
+But he\'s considered an invaluable asset because of his technical knowledge.'
+    scene='2'
+    opt
+        name='Fire Tim. Zero tolerance.'
+        outcome
+            text='The other employees seem more relaxed and comfortable now. 
+We will need to start the hiring process to replace Tim.'
+            mod
+                id='Morale'
+                diff='+5'
+            mod
+                id='Revenue'
+                diff='-5'
+    opt
+        name='We really can\'t afford to replace Tim right now. Sweep it under the rug.'
+        outcome
+            text='There is a noticeable feeling of discomfort among the employees. But at least 
+the company\'s technical needs are being met.'
+            mod
+                id='Morale'
+                diff='-5'
+            mod
+                id='Legality'
+                diff='-5'
+event
+    name='Workplace Diversity'
+    text='You need to hire some new employees. Do you choose to try to bring more 
+diversity into the workplace, or simply focus on technical skills.'
+    scene='2'
+    opt
+        name='Diversity is important to the workplace.'
+        outcome
+            text='You are able to bring some unique perspectives to the company.'
+            mod
+                id='Reputation'
+                diff='+5'
+            mod
+                id='Legality'
+                diff='+5'
+    opt
+        name='Just focus on technical skills.'
+        outcome
+            prob='0.5'
+            text='You hire some excellent employees, although they share much of the same backgrounds 
+and this may limit creativity.'
+            mod
+                id='Revenue'
+                diff='-5'
+        outcome
+            prob='0.5'
+            text='You hire some excellent employees, although they share much of the same backgrounds 
+and this may limit creativity.'
+            mod
+                id='Revenue'
+                diff='+5'
+event
+    name='Sexual Harassment'
+    text='You receive a complaint that a certain employee is making inappropriate comments 
+about female employees\' appearance. What do you do?'
+    scene='2'
+    opt
+        name='Give this employee a warning.'
+        outcome
+            text='You have shown that this is an important issue.'
+            mod
+                id='Morale'
+                diff='+5'
+            mod
+                id='Legality'
+                diff='+5'
+    opt
+        name='It\'s not a big deal. Do nothing.'
+        outcome
+            text='Some employees are uncomfortable with this decision.'
+            mod
+                id='Morale'
+                diff='-5'
+            mod
+                id='Legality'
+                diff='-5'
+event
+    name='Company dress policy'
+    text='An employee is wearing clothing which does not comply with the company\'s dress policy.' 
+    scene='2'
+    opt
+        name='Give them a warning; they are making people uncomfortable.'
+        outcome
+            prob='0.5'
+            text='They agree to comply with the company dress policy going forward.'
+            mod
+                id='Morale'
+                diff='+5'
+            mod
+                id='Legality'
+                diff='+5'
+        outcome
+            prob='0.5'
+            text='The refuse to comply and threaten legal action.'
+            mod
+                id='Morale'
+                diff='-5'
+            mod
+                id='Legality'
+                diff='-5'
+    opt
+        name='Ignore the issue this time. It will work itself out.'
+        outcome
+            text='Some of their co-workers are made uncomfortable by this decision.'
+            mod
+                id='Morale'
+                diff='-5'
+            mod
+                id='Legality'
+                diff='-5'
+event
+  name='Developers ask for raise'
+  text='The developers are asking for a raise! How do you react?'
+  scene='3'
+  opt
+    name='Give them a raise'
+    outcome
+      text='The developers rejoice!'
+      mod
+        id='Morale'
+        diff='5'
+      mod
+        id='Revenue'
+        diff='-5'
+   opt
+     name='No raise!'
+     outcome
+       text='The developers are disgruntled.'
+       mod
+         id='Morale'
+         diff='-5'
+event
+    name='Outsource developers'
+    text='Would you like to outsource developers from overseas?'
+    scene='3'
+    opt
+        name='Yes'
+        outcome
+            text='Yes'
+            mod
+                id='Morale'
+                diff='-5'
+            mod
+                id='Revenue'
+                diff='5'
+    opt
+        name='No'
+        outcome
+            text='No'
+            mod
+                id='Morale'
+                diff='5'
+            mod
+                id='Revenue'
+                diff='-5'
+event
+    name='Dark Pattern In App'
+    text='Should we utilize dark patterns in the application, in order to increase revenue?'
+    scene='3'
+    opt
+        name='Yes'
+        outcome
+            text='You implement dark patterns in the app. Users find it frustrating.'
+            mod
+                id='Reputation'
+                diff='-5'
+            mod
+                id='Legality'
+                diff='-5'
+            mod
+                id='Revenue'
+                diff='+5'
+    opt
+        name='No'
+        outcome
+            text='You try to create an ethical user experience. Users appreciate this.'
+            mod
+                id='Reputation'
+                diff='+5'
+event
+    name='Twitter Confrontation'
+    text='Your lead developer is being confrontational with customers on Twitter.'
+    scene='3'
+    opt
+        name='Revoke the lead developer's Twitter privileges.'
+        outcome
+            text='You have demonstrated to the community that this is an important issue.'
+            mod
+                id='Reputation'
+                diff='+5'
+    opt
+        name='Do nothing. They/'re just stressed.'
+        outcome
+            text='Some customers feel offended and stop using your product.'
+            mod
+                id='Reputation'
+                diff='-5'
+             mod
+               id='Revenue'
+ 	   diff='-5'
+event
+    name='Pay raise'
+    text='Developers are asking for a significant raise.' 
+    scene='3'
+    opt
+        name='Give them the raise.'
+        outcome
+            prob='1.0'
+            text='The developers are satisfied for now.'
+            mod
+                id='Morale'
+                diff='+5'
+            mod 
+                id='Revenue'
+                diff='-5'
+    opt
+        name='Refuse; they are being paid enough already.'
+        outcome
+            prob='0.5'
+            text='The developers complain but accept the decision.'
+            mod
+                id='Morale'
+                diff='-5'
+        outcome
+            prob='0.5'
+            text='The developers complain, and some of them accept job offers from competitors.'
+            mod
+                id='Morale'
+                diff='-5'
+            mod
+                id='Revenue'
+                diff='-5'
+event
+  name='A Questionable Act Of Charity'
+  text='You stop by to say hello to Merideth while coming back from the cafeteria and just happen to see her writing a check to herself from the company. Curious, you ask about it, and she claims that she had plans to use it for charity. She asks you not to report it to your father and insists that you can trust her because of her closeness with your family.'
+  scene='4'
+  opt
+    name='Trust Merideth and drop the issue.'
+    outcome
+      text='You trust that Merideth is acting with your father\'s approval and let the issue go without another thought.'
+      mod
+        id=Revenue
+        diff='-5'
+      mod
+        id='Legality'
+        diff='-5'
+   opt
+     name='Offer to add to the donation'
+      outcome
+       text='You decide that whether or not Merideth got approval to write herself checks to donate to charity, it\'s still a good cause, so you throw in a few bucks of your own.'
+       mod
+         id='Revenue'
+         diff='-5'
+     outcome
+       text='Despite Merideth\'s closeness to your family, you decide that this sounds a little too fishy to be true and report the incident to HR and leave it in their hands.'
+       mod
+         id='Revenue'
+         diff='5'
+       mod
+         id='Legality'
+         diff='5'
+       mod
+         id='Reputation'
+         diff='-5'
+event
+  name='I\'m no rat, you\'re a rat!'
+  text='As you are walking past Merideth's cubicle, you overhear her talking to Samantha about one of the new accounting interns. It sounds like they were fudging some numbers on the monthly spending reports. What do you do?'
+  scene='4'
+  opt
+    name='Join in on the conversation.'
+    outcome
+      text='You butt into the conversation and say that you always wondered about the integrity of the intern. Meredith and Samantha don't appreciate you joining such a serious conversation that you weren't invited into. You feel awkward as you walk back to your desk.'
+      mod
+        id=Reputation'
+        diff='-5'
+   opt
+     name='Keep walking.'
+      outcome
+       text='Despite the suspicion you already feel toward the intern, you decide that it's best to leave things well enough alone and don't join the conversation. Hopefully the issue can be resolved without too many issues for the company.'
+       mod
+         id='Reputation'
+         diff='5'
+event
+  name='A Dazzling Sight'
+  text='Your latest billboard has been effective in drawing in a lot of new business, but its prominent position over the freeway combined with flashy lights has also brought in a wave of complaints.'
+  scene='5'
+  opt
+    name='Remove the billboard'
+    outcome
+      text='You decide the bad press and potential for a lawsuit isn\'t worth it.'
+      mod
+        id='Reputation'
+        diff='5'
+      mod
+        id='Legality'
+        diff='5'
+   opt
+     name='Leave it up'
+      outcome
+       prob='0.75'
+       text='There\'s no law against the billboard\'s current appearance. People will just have to deal with it.'
+       mod
+         id='Revenue'
+         diff='5'
+      mod
+         id='Reputation'
+         diff='-5'
+     outcome
+       prob='0.25'
+       text='Complaints kept coming in until eventually a lawsuit was filed against your company due to a car crash victim that claimed the billboard caused their accident.'
+       mod
+         id='Revenue'
+         diff='-5'
+       mod
+         id='Legality'
+         diff='-5'
+       mod
+         id='Reputation'
+         diff='-5'
+event
+  name='Unfocused Group'
+  text='There was a typo in the notice put out about your latest product focus group that promised a significantly bigger pay for participants. Those that took part are demanding the full amount.'
+  scene='5'
+  opt
+    name='Pay in full'
+    outcome
+      text='The people are satisfied though your bottom line is hurting.'
+      mod
+        id='Revenue'
+        diff='-5'
+      mod
+        id='Reputation'
+        diff='5'
+   opt
+     name='Pay what was intended'
+     outcome
+       text='They\'re far from happy with your decision, but there was only so much money budgeted for this.'
+       mod
+         id='Reputation'
+         diff='-5'
+
+event
+  name='Desperate Measures'
+  text='A former employee of the company is claiming to have information that could destroy the company\'s reputation, and potentially incite legal action, if released. They demand a high compensation price in order to hand over the information.
+  scene='5'
+  opt
+    name='Wire the money'
+    outcome
+      text='You send the money to them with no questions asked and secure what could\'ve been a PR disaster for the company.'
+      mod
+        id='Revenue'
+        diff='-5'
+      mod
+        id='Reputation'
+        diff='5'
+      mod
+        id='Legality'
+        diff='5'
+   opt
+     name='Negotiate a better deal'
+     outcome
+       prob='0.3'
+       text='Your blackmailer is surprisingly reasonable and agrees to hand over the information in exchange for the company\'s latest line of products.'
+       mod
+         id='Reputation''
+         diff='5' 
+       mod
+         id='Legality''
+         diff='5'
+     outcome
+       prob='0.7'
+       text='They scoff at your attempts to barter and release a small portion of the information online to show they\'re serious. You have no choice but to pay in full.'
+       mod
+         id='Revenue'
+         diff='-5'
+       mod
+         id='Reputation'
+         diff='-5'
+   opt
+    name='No deal'
+    outcome
+      text='You decide whatever information they have isn\'t worth the price and soon find a series of scandalous videos involving higher-up officials in the company spreading across the internet like wildfire.'
+      mod
+        id='Reputation'
+        diff='-5'
+      mod
+        id='Legality'
+        diff='-5'
+
+event
+  name='Security Breach'
+  text='An unknown hacker has infiltrated your systems and stolen a large amount of customer data. While it\'s not clear if this includes passwords or other sensitive information, a choice has to be made whether to inform the public or try to sweep it under the rug.'
+  scene='5'
+  opt
+    name='Cover it up'
+    outcome
+      text='You decide whatever data got stolen isn\'t worth the backlash that would be had from announcing the breach.'
+      mod
+        id='Reputation'
+        diff='5'
+      mod
+        id='Legality'
+        diff='-5'
+   opt
+     name='Report the incident'
+     outcome
+       text='It\'s required by law to notify of a data breach. You would be a fool to try to hide it.'
+       mod
+         id='Reputation'
+         diff='-5'
+       mod
+         id='Legality'
+         diff='5'
+
+event
+  name='Charitable Acts'
+  text='One of your PR representatives has made a big statement about donating to a local charity without clearing it with the higher-ups. The people are impressed, but do you have the money to do it?'
+  scene='5'
+  opt
+    name='Find the funds'
+    outcome
+      text='It might not be in the budget, but a promise is a promise and charitable donations do come with perks.'
+      mod
+        id='Revenue'
+        diff='-5'
+      mod
+        id='Reputation'
+        diff='5'
+   opt
+     name='Retract the statement'
+     outcome
+       text='As much as you might like to make the donation, there\'s simply not enough money.'
+       mod
+         id='Reputation'
+         diff='-5'
+event
+  name='For the Community'
+  text='Your head of PR had the idea of funding a new community center for the town your HQ is located in. It could foster a lot of good will with the people, but everything comes with a price.'
+  scene='5'
+  opt
+    name='Spare no expense'
+    outcome
+      text='Sometimes there are things more important than money. It feels good to give back.'
+      mod
+        id='Revenue'
+        diff='-5'
+      mod
+        id='Reputation'
+        diff='5'
+   opt
+     name='Partial funding'
+     outcome
+       text='Some extra money was found leftover from a previous venture. The new center is not quite as extravagant, but the people are still happy.'
+       mod
+         id='Reputation'
+         diff='5'
+   opt
+     name='No funding'
+     outcome
+       text='It\'s a lovely idea, but the budget can\'t make it work.'
+       mod
+         id='Reputation'
+         diff='-5'
+event
+  name='Outrage'
+  text='Allegations of sexual assault towards one of the higher-ups in the company have been circulating in the local news. While there have been no complaints from within the company, it's still a potentially major scandal.'
+  scene='5'
+  opt
+    name='Fire Him'
+    outcome
+      text='Any potential scandal wouldn't be good for the company\'s image.'
+      mod
+        id='Reputation'
+        diff='5'
+      mod
+        id='Revenue'
+        diff='-5'
+   opt
+     name='Wait for a proper investigation'
+     outcome
+       prob='0.7'
+       text='After a formal investigation, the allegations were declared unfounded without any actual evidence.'
+       mod
+         id='Revenue'
+         diff='5'
+     outcome
+       prob='0.3'
+       text='After a formal investigation, the allegations were found to have some merit leading to his arrest and eventual trial. The public outrage only got worse with the company being seen as defending a predator.'
+       mod
+         id='Revenue'
+         diff='-5'
+       mod
+         id='Reputation'
+         diff='-5'
+event
+  name='Field Trip'
+  text='Your head of PR has a new idea to foster some goodwill with the community by funding field trips for highschools in the area.'
+  scene='5'
+  opt
+    name='We\'ve got the money'
+    outcome
+      text='You decide it sounds like a great idea and approve of the project.'
+      mod
+        id='Revenue'
+        diff='-5'
+      mod
+        id='Reputation'
+        diff='5'
+   opt
+     name='Too costly'
+     outcome
+       text='You decide there\'s not enough in the budget to warrant such an expense.'
+       mod
+         id='Reputation'
+         diff='-5'
+event
+  name='Politically Correct'
+  text='Information has leaked about a series of campaign donations made by a high-ranking official of the company to a few unsavory politicians. Someone\'s political affiliation is a personal matter, but an official statement from the company may help avoid bad press.'
+  scene='5'
+  opt
+    name='\”His actions don't represent the company\”'
+    outcome
+      text='It\'s best to get ahead of the situation before any outrageous claims are made against the company as a whole.'
+      mod
+        id='Reputation'
+        diff='5'
+      mod
+        id='Morale'
+        diff='-5'
+   opt
+     name='Remain silent'
+     outcome
+       text='It wouldn\'t be appropriate for the company to get involved in the situation.'
+       mod
+         id='Morale'
+         diff='5'
+       mod
+         id='Reputation'
+         diff='-5'
+event
+  name='Smile and Wave'
+  text='You\'ve been invited to a local event celebrating businesses in the community as a guest speaker to talk about how your company became such a success. It could be great publicity, but you aren\'t exactly the best public speaker.'
+  scene='5'
+  opt
+    name='Attend the event'
+    outcome
+       prob='0.6'
+       text='It took some convincing from your head of PR, but you agree to attend the event. Their advice on how to deliver a speech helped you get through without major embarrassment .'
+       mod
+         id='Reputation'
+         diff='5'
+     outcome
+       prob='0.4'
+       text='It took some convincing from your head of PR, but you agree to attend the event. Unfortunately, no amount of prep could prepare you for the trainwreck of a speech you end up giving.'
+       mod
+         id='Reputation'
+         diff='-5'
+       mod
+         id='Morale'
+         diff='-5'
+   opt
+     name='Politely decline'
+     outcome
+       text='It\'s better not to risk looking like a fool on stage.'
+       mod
+         id='Reputation'
+         diff='-5'
+event
+  name='Money Talks'
+  text='The company has been getting slammed with bad press lately after a pitiful new product launch, and it doesn\'t seem to be getting any better. However, a journalist from a major news site has offered to write an article giving the company a glowing review for a little money under the table.'
+  scene='5'
+  opt
+    name='Anything to improve the situation'
+    outcome
+      text='You decide a little bribery might be your best bet in turning things around.'
+      mod
+        id='Revenue'
+        diff='-5'
+      mod
+        id='Reputation'
+        diff='5'
+   opt
+     name='Turn down the offer'
+     outcome
+       text='There\'s no way you\'d resort to bribing someone for good press. That's not what this company stands for.'
+       mod
+         id='Reputation'
+         diff='-5'
+       mod
+         id='Morale'
+         diff='5'
+event
+  name='Clickbait Journalism'
+  text='A journalist wants to interview you about the state of the company and your plans going forward, but you\'ve heard from a reliable source that this journalist is known for sensational articles that frame things wildly out of context.'
+  scene='5'
+  opt
+    name='Take the interview'
+    outcome
+       prob='0.7'
+       text='You\'re very careful about what you say during the interview leaving no chance for your words to be twisted.'
+       mod
+         id='Reputation'
+         diff='5'
+     outcome
+       prob='0.3'
+       text='You thought the interview went great until the next day\'s headline shows just how skilled at twisting the narrative they really are.'
+       mod
+         id='Reputation''
+         diff='-5'
+       mod
+         id='Morale'
+         diff='-5'
+   opt
+     name='Refuse the interview'
+     outcome
+       text='It isn\'t worth the trouble to take an interview with a journalist that is only out to get the next attention grabbing headline.'
+       mod
+         id='Reputation'
+         diff='-5'
+event
+  name='A little extra to go around'
+  text='Zeke meets up with you for lunch. While you\'re eating, quietly suggests that it is a good idea to cut some corners here and there to increase revenue. He also suggests that “some investors” might be more inclined to invest more in the company.'
+  scene='6'
+  opt
+    name='A little too shady'
+    outcome
+      text='You thank him for the tip, but decide that it's not worth it to treat customers poorly.'
+      mod
+        id='Revenue'
+        diff='-5'
+      mod
+        id='Reputation'
+        diff='5'
+mod
+         id='Legality'
+         diff='5'
+   opt
+     name='It\'s worth the risk'
+     outcome
+       text='You let him know that you will take a look at costs and see what you can do to bring them down, provided that “some investors” hold up their end of the deal.'
+       mod
+         id='Reputation'
+         diff='-5'
+        mod
+         id=Legality
+         diff='-5'
+        mod
+         id='Revenue'
+         diff='5'
+event
+  name='Some helpful pointers'
+  text='While having lunch with Zeke, he offers to give you some investing pointers that can help you make it big in no time. He suggests that you start by investing in certain companies which may be considered objectionable, and also mentions that he has a friend or two that may be able to help you out by sharing information a little earlier than other people would learn.'
+  scene='6'
+  opt
+    name='A bit of insider information can\'t hurt'
+    outcome
+      text='You feel like Zeke is right about making quick money and start looking at some of these companies you can invest in. You welcome any tips that you can get, so you reach out to Zeke\'s friends for tips.'
+      mod
+        id='Reputation'
+        diff='-5'
+      mod
+         id='Legality'
+         diff='-5'
+   opt
+     name='Tobacco and stuff equals bad'
+     outcome
+       text='You thank him for his willingness to share these tips, but your concerns about the morality of the situation are too great (to speak nothing of your feelings towards the legality of these tips).'
+       mod
+         id='Reputation'
+         diff='5'
+       mod
+         id=Legality
+         diff='5'
+event
+  name=‘Company Relaxation'
+  text=‘Your latest construction project has cost far less than expected. The contractor suggests using the surplus to add an employee lounge to the building, but you could also hold onto it for other uses. What will you do?'
+  scene='7'
+  opt
+    name=‘Build the lounge'
+    outcome
+      text='Everyone\'s excited about the new lounge! The mood around the office has improved greatly.'
+      mod
+        id='Morale'
+        diff='5'
+   opt
+     name='Redirect the money'
+     outcome
+       text='The company budget thanks you, but word has gotten around the office about your money saving decision.'
+       mod
+         id='Morale'
+         diff='-5'
+       mod
+        id='Revenue'
+        diff='5'
+event
+  name='Not Quite Legal'
+  text='It seems the proper permits have been harder to acquire than expected for constructing a new branch in Utah. You could put a hold on the project until everything is in order, but your bottom line will suffer. What will you do?'
+  scene='7'
+  opt
+    name='Halt the project'
+    outcome
+      text='A few weeks of lost time aren\'t that bad in comparison to a potential lawsuit.'
+      mod
+        id='Revenue'
+        diff='-5'
+      mod
+        id='Legality'
+        diff='5'
+   opt
+     name='Keep things moving'
+     outcome
+       text='Who cares if there\'s a delay in getting the permits? As long as they\'re acquired soon no one will be the wiser.'
+       mod
+         id='Legality'
+         diff='-5'
+event
+  name='Cutting Corners'
+  text='The budget for expanding the main office has been strained due to unexpected additional costs. Your contractor suggests substituting in some cheaper materials to save some money, but it won\'t be up to regulation. What will you do?'
+  scene='7'
+  opt
+    name='Use the cheaper materials'
+    outcome
+      text='Everything seems to have gone smoothly with the construction. A few flimsy nails won\'t hurt anyone right?'
+      mod
+        id='Legality'
+        diff='-5'
+   opt
+     name='Expand the budget'
+     outcome
+       text='Safety comes first. You\'ll have to make do with extra expenses.'
+       mod
+         id='Revenue'
+         diff='-5'
+       mod
+         id='Legality'
+         diff='5'
+event
+  name='Public Comfort'
+  text='A choice needs to be made about the design of the waiting area in one of your customer service centers. Do you spend more for customer comfort and go with nicer cushioned chairs, or will you save some money with basic plastic chairs?'
+  scene='7'
+  opt
+    name='Cushioned chairs'
+    outcome
+      text='A good call. The customer always comes first after all.'
+      mod
+        id='Revenue'
+        diff='-5'
+      mod
+        id='Reputation'
+        diff='5'
+   opt
+     name='Plastic chairs'
+     outcome
+       text='A prudent decision albeit a bit cold. Who knows what future projects might need that money?'
+       mod
+         id='Reputation'
+         diff='-5'
+event
+  name='Distance Rumble'
+  text='One of the company\'s older office buildings happens to be in an area known for minor earthquakes. Your contractor suggests updating the building to be better fortified against them, but there hasn\'t been a major earthquake in the last decade. What do you do?'
+  scene='7'
+  opt
+    name='Update the building'
+    outcome
+      text='Any potential disaster is cause for concern. With this, your building and employees will be safe.'
+      mod
+        id='Revenue'
+        diff='-5'
+      mod
+        id='Morale'
+        diff='5'
+   opt
+     name='Leave it be'
+     outcome
+       prob='0.8'
+       text='There\'s no reason to be hasty. The building can always be updated later.'
+       mod
+         id='Revenue'
+         diff='5'
+     outcome
+       prob='0.2'
+       text='Disaster strikes! Only a few months after your decision to not update the building a once-in-a-century earthquake occurs.'
+       mod
+         id='Revenue'
+         diff='-5'
+       mod
+         id='Morale'
+         diff='-5'
+event
+  name='Instability'
+  text='A regular inspection of a company building has revealed issues with the foundation that could cause problems in the future.'
+  scene='7'
+  opt
+    name='Attempt to correct the issue without major renovation'
+   outcome
+       prob='0.7'
+       text='The issue is under control for the time being, but the building may still have issues in the future.'
+       mod
+         id='Legality'
+         diff='-5'
+     outcome
+       prob='0.3'
+       text='The issue was worse than expected, and a full demolition can't be avoided.'
+       mod
+         id='Revenue'
+         diff='-5'
+       mod
+         id='Morale'
+         diff='-5'
+   opt
+     name='Demolish the building and build new'
+     outcome
+       text='It\'s not worth the extra trouble of trying to save the building. A new construction will be best for the future.'
+       mod
+         id='Revenue'
+         diff='-5'
+       mod
+         id='Morale'
+         diff='5'

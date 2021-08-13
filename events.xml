@@ -1,0 +1,665 @@
+<events>
+	<event Name="I've Fallen and Can't Get Up" Scene="1">
+		<text>An employee has filed a complaint against the company for an injury that happened on company property. They claim unsafe conditions caused them to fall while heading to their cubicle.</text>
+		<option Name="Pay the claim">
+			<text></text>
+			<outcome Probability="">
+				<text>You take care of your people around here. Fighting the claim would only cause more trouble within the company.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+					<modifier Resource="Morale">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Fight the claim">
+			<text></text>
+			<outcome Probability="0.5">
+				<text>Just paying up could set a bad precedent for future claims. You successfully fight the claim at the expense of your employees' happiness.</text>
+				<modifiers>
+					<modifier Resource="Morale">-5</modifier>
+				</modifiers>
+			</outcome>
+			<outcome Probability="0.5">
+				<text>Just paying up could set a bad precedent for future claims. You fail to fight the claim and have to pay up anyways.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+					<modifier Resource="Morale">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Copyright Claim" Scene="1">
+		<text>Another company has come after you for possible theft of their copyrighted software in your latest product. They're giving you the choice to pull it off the market or be taken to court.</text>
+		<option Name="Pull the product">
+			<text></text>
+			<outcome Probability="">
+				<text>You decide the fight isn't worth it and pull the product to remove the contested software.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Go to court">
+			<text></text>
+			<outcome Probability="0.7">
+				<text>You decide to fight the claim and win easily. They were trying to scare you into an easy payday.</text>
+				<modifiers>
+					<modifier Resource="Legality">5</modifier>
+				</modifiers>
+			</outcome>
+			<outcome Probability="0.3">
+				<text>You decide to fight the claim and lose. Apparently one of your developers knowingly used their software without telling anyone.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+					<modifier Resource="Morale">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Failure to Deliver" Scene="1">
+		<text>The deadline has passed on a product the company agreed to create for a high-profile customer. They're angry and demand to be reimbursed for the money they put towards its development as per the terms of the agreement; however, the agreement was only verbal in nature.</text>
+		<option Name="Ask for an extension">
+			<text></text>
+			<outcome Probability="">
+				<text>They're a longtime customer of the company and open to reason. A new agreement has been made extending the deadline by 1 month.</text>
+				<modifiers>
+					<modifier Resource="Legality">5</modifier>
+					<modifier Resource="Reputation">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Tell them: ”It'll be ready when it's ready”">
+			<text></text>
+			<outcome Probability="">
+				<text>Development always has some issues, and they'll just have to deal with that.</text>
+				<modifiers>
+					<modifier Resource="Reputation">-5</modifier>
+					<modifier Resource="Morale">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Keep the money and cut ties with the customer">
+			<text></text>
+			<outcome Probability="">
+				<text>The agreement wasn't legally binding. You decide the development is too much trouble and shut down the project much to the customer's rage.</text>
+				<modifiers>
+					<modifier Resource="Revenue">5</modifier>
+					<modifier Resource="Reputation">-5</modifier>
+					<modifier Resource="Legality">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Old Friend?" Scene="1">
+		<text>A former co-founder of the company has reappeared. He's demanding to be put back in as chief operating officer after seeing how profitable the company has become. An agreement was made to buy him out of the company years ago, but the legal paperwork, if it ever existed, has since been lost.</text>
+		<option Name="Deny his demands">
+			<text></text>
+			<outcome Probability="0.9">
+				<text>Regardless of paperwork, he has no grounds to stand on in making such demands.</text>
+				<modifiers>
+					<modifier Resource="Morale">5</modifier>
+				</modifiers>
+			</outcome>
+			<outcome Probability="0.1">
+				<text>As unbelievable as it seems, he takes you to court and successfully gets himself put back in as COO. The legal battle cost the company greatly.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+					<modifier Resource="Morale">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Fire the current COO">
+			<text></text>
+			<outcome Probability="">
+				<text>You'd rather not have to deal with a lengthy legal engagement especially since you can't find the paperwork from when he left the company.</text>
+				<modifiers>
+					<modifier Resource="Morale">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Defamation" Scene="1">
+		<text>A hotshot journalist has been writing absurd articles about your company that borderline on libel. Your lawyer advises taking them to court but warns that it could drag out for a while.</text>
+		<option Name="Sue them">
+			<text></text>
+			<outcome Probability="0.8">
+				<text>It's important to stand your ground and make an example of them to stop anyone else from doing the same.</text>
+				<modifiers>
+					<modifier Resource="Legality">5</modifier>
+				</modifiers>
+			</outcome>
+			<outcome Probability="0.2">
+				<text>Shockingly, they win the court case. The company takes a heavy hit as their articles get more public attention.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+					<modifier Resource="Reputation">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Pay them off instead">
+			<text></text>
+			<outcome Probability="">
+				<text>Things are resolved quicker when there's money involved. No reason to go through a lengthy court process.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Problematic Employee" Scene="2">
+		<text>An employee named Tim is bullying his coworkers and using discriminatory language. But he's considered an invaluable asset because of his technical knowledge.</text>
+		<option Name="Fire Tim. Zero tolerance.">
+			<text></text>
+			<outcome Probability="">
+				<text>The other employees seem more relaxed and comfortable now. We will need to start the hiring process to replace Tim.</text>
+				<modifiers>
+					<modifier Resource="Morale">+5</modifier>
+					<modifier Resource="Revenue">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="We really can't afford to replace Tim right now. Sweep it under the rug.">
+			<text></text>
+			<outcome Probability="">
+				<text>There is a noticeable feeling of discomfort among the employees. But at least the company's technical needs are being met.</text>
+				<modifiers>
+					<modifier Resource="Morale">-5</modifier>
+					<modifier Resource="Legality">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Workplace Diversity" Scene="2">
+		<text>You need to hire some new employees. Do you choose to try to bring more diversity into the workplace, or simply focus on technical skills.</text>
+		<option Name="Diversity is important to the workplace.">
+			<text></text>
+			<outcome Probability="">
+				<text>You are able to bring some unique perspectives to the company.</text>
+				<modifiers>
+					<modifier Resource="Reputation">+5</modifier>
+					<modifier Resource="Legality">+5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Just focus on technical skills.">
+			<text></text>
+			<outcome Probability="0.5">
+				<text>You hire some excellent employees, although they share much of the same backgrounds and this may limit creativity.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+				</modifiers>
+			</outcome>
+			<outcome Probability="0.5">
+				<text>You hire some excellent employees, although they share much of the same backgrounds and this may limit creativity.</text>
+				<modifiers>
+					<modifier Resource="Revenue">+5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Sexual Harassment" Scene="2">
+		<text>You receive a complaint that a certain employee is making inappropriate comments about female employees' appearance. What do you do?</text>
+		<option Name="Give this employee a warning.">
+			<text></text>
+			<outcome Probability="">
+				<text>You have shown that this is an important issue.</text>
+				<modifiers>
+					<modifier Resource="Morale">+5</modifier>
+					<modifier Resource="Legality">+5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="It's not a big deal. Do nothing.">
+			<text></text>
+			<outcome Probability="">
+				<text>Some employees are uncomfortable with this decision.</text>
+				<modifiers>
+					<modifier Resource="Morale">-5</modifier>
+					<modifier Resource="Legality">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Company dress policy" Scene="2">
+		<text>An employee is wearing clothing which does not comply with the company's dress policy.</text>
+		<option Name="Give them a warning; they are making people uncomfortable.">
+			<text></text>
+			<outcome Probability="0.5">
+				<text>They agree to comply with the company dress policy going forward.</text>
+				<modifiers>
+					<modifier Resource="Morale">+5</modifier>
+					<modifier Resource="Legality">+5</modifier>
+				</modifiers>
+			</outcome>
+			<outcome Probability="0.5">
+				<text>The refuse to comply and threaten legal action.</text>
+				<modifiers>
+					<modifier Resource="Morale">-5</modifier>
+					<modifier Resource="Legality">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Ignore the issue this time. It will work itself out.">
+			<text></text>
+			<outcome Probability="">
+				<text>Some of their co-workers are made uncomfortable by this decision.</text>
+				<modifiers>
+					<modifier Resource="Morale">-5</modifier>
+					<modifier Resource="Legality">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Developers ask for raise" Scene="3">
+		<text>The developers are asking for a raise! How do you react?</text>
+		<option Name="Give them a raise">
+			<text></text>
+			<outcome Probability="">
+				<text>The developers rejoice!</text>
+				<modifiers>
+					<modifier Resource="Morale">5</modifier>
+					<modifier Resource="Revenue">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="No raise!">
+			<text></text>
+			<outcome Probability="">
+				<text>The developers are disgruntled.</text>
+				<modifiers>
+					<modifier Resource="Morale">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Outsource developers" Scene="3">
+		<text>Would you like to outsource developers from overseas?</text>
+		<option Name="Yes">
+			<text></text>
+			<outcome Probability="">
+				<text>Yes</text>
+				<modifiers>
+					<modifier Resource="Morale">-5</modifier>
+					<modifier Resource="Revenue">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="No">
+			<text></text>
+			<outcome Probability="">
+				<text>No</text>
+				<modifiers>
+					<modifier Resource="Morale">5</modifier>
+					<modifier Resource="Revenue">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Dark Pattern In App" Scene="3">
+		<text>Should we utilize dark patterns in the application, in order to increase revenue?</text>
+		<option Name="Yes">
+			<text></text>
+			<outcome Probability="">
+				<text>You implement dark patterns in the app. Users find it frustrating.</text>
+				<modifiers>
+					<modifier Resource="Reputation">-5</modifier>
+					<modifier Resource="Legality">-5</modifier>
+					<modifier Resource="Revenue">+5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="No">
+			<text></text>
+			<outcome Probability="">
+				<text>You try to create an ethical user experience. Users appreciate this.</text>
+				<modifiers>
+					<modifier Resource="Reputation">+5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Twitter Confrontation" Scene="3">
+		<text>Your lead developer is being confrontational with customers on Twitter.</text>
+		<option Name="Revoke the lead developer outcome text= mod id= diff= opt name=re just stressed.">
+			<text></text>
+			<outcome Probability="">
+				<text>Some customers feel offended and stop using your product.</text>
+				<modifiers>
+					<modifier Resource="Reputation">-5</modifier>
+					<modifier Resource="Revenue">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Pay raise" Scene="3">
+		<text>Developers are asking for a significant raise.</text>
+		<option Name="Give them the raise.">
+			<text></text>
+			<outcome Probability="1.0">
+				<text>The developers are satisfied for now.</text>
+				<modifiers>
+					<modifier Resource="Morale">+5</modifier>
+					<modifier Resource="Revenue">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Refuse; they are being paid enough already.">
+			<text></text>
+			<outcome Probability="0.5">
+				<text>The developers complain but accept the decision.</text>
+				<modifiers>
+					<modifier Resource="Morale">-5</modifier>
+				</modifiers>
+			</outcome>
+			<outcome Probability="0.5">
+				<text>The developers complain, and some of them accept job offers from competitors.</text>
+				<modifiers>
+					<modifier Resource="Morale">-5</modifier>
+					<modifier Resource="Revenue">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="A Questionable Act Of Charity" Scene="4">
+		<text>You stop by to say hello to Merideth while coming back from the cafeteria and just happen to see her writing a check to herself from the company. Curious, you ask about it, and she claims that she had plans to use it for charity. She asks you not to report it to your father and insists that you can trust her because of her closeness with your family.</text>
+		<option Name="Trust Merideth and drop the issue.">
+			<text></text>
+			<outcome Probability="">
+				<text>You trust that Merideth is acting with your father's approval and let the issue go without another thought.</text>
+				<modifiers>
+					<modifier Resource="">-5</modifier>
+					<modifier Resource="Legality">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Offer to add to the donation">
+			<text></text>
+			<outcome Probability="">
+				<text>You decide that whether or not Merideth got approval to write herself checks to donate to charity, it's still a good cause, so you throw in a few bucks of your own.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+				</modifiers>
+			</outcome>
+			<outcome Probability="">
+				<text>Despite Merideth's closeness to your family, you decide that this sounds a little too fishy to be true and report the incident to HR and leave it in their hands.</text>
+				<modifiers>
+					<modifier Resource="Revenue">5</modifier>
+					<modifier Resource="Legality">5</modifier>
+					<modifier Resource="Reputation">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="I'm no rat, you're a rat!">
+		<text>As you are walking past Merideth scene= opt name= outcome text=t appreciate you joining such a serious conversation that you weren mod id=Reputation</text>
+		<option Name="Keep walking.">
+			<text></text>
+			<outcome Probability="">
+				<text>Despite the suspicion you already feel toward the intern, you decide that itt join the conversation. Hopefully the issue can be resolved without too many issues for the company.</text>
+				<modifiers>
+					<modifier Resource="Reputation">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="A Dazzling Sight" Scene="5">
+		<text>Your latest billboard has been effective in drawing in a lot of new business, but its prominent position over the freeway combined with flashy lights has also brought in a wave of complaints.</text>
+		<option Name="Remove the billboard">
+			<text></text>
+			<outcome Probability="">
+				<text>You decide the bad press and potential for a lawsuit isn't worth it.</text>
+				<modifiers>
+					<modifier Resource="Reputation">5</modifier>
+					<modifier Resource="Legality">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Leave it up">
+			<text></text>
+			<outcome Probability="0.75">
+				<text>There's no law against the billboard's current appearance. People will just have to deal with it.</text>
+				<modifiers>
+					<modifier Resource="Revenue">5</modifier>
+					<modifier Resource="Reputation">-5</modifier>
+				</modifiers>
+			</outcome>
+			<outcome Probability="0.25">
+				<text>Complaints kept coming in until eventually a lawsuit was filed against your company due to a car crash victim that claimed the billboard caused their accident.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+					<modifier Resource="Legality">-5</modifier>
+					<modifier Resource="Reputation">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Unfocused Group" Scene="5">
+		<text>There was a typo in the notice put out about your latest product focus group that promised a significantly bigger pay for participants. Those that took part are demanding the full amount.</text>
+		<option Name="Pay in full">
+			<text></text>
+			<outcome Probability="">
+				<text>The people are satisfied though your bottom line is hurting.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+					<modifier Resource="Reputation">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Pay what was intended">
+			<text></text>
+			<outcome Probability="">
+				<text>They're far from happy with your decision, but there was only so much money budgeted for this.</text>
+				<modifiers>
+					<modifier Resource="Reputation">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Desperate Measures">
+		<text>They scoff at your attempts to barter and release a small portion of the information online to show they're serious. You have no choice but to pay in full.</text>
+		<option Name="No deal">
+			<text></text>
+			<outcome Probability="">
+				<text>You decide whatever information they have isn't worth the price and soon find a series of scandalous videos involving higher-up officials in the company spreading across the internet like wildfire.</text>
+				<modifiers>
+					<modifier Resource="Reputation">-5</modifier>
+					<modifier Resource="Legality">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Security Breach" Scene="5">
+		<text>An unknown hacker has infiltrated your systems and stolen a large amount of customer data. While it's not clear if this includes passwords or other sensitive information, a choice has to be made whether to inform the public or try to sweep it under the rug.</text>
+		<option Name="Cover it up">
+			<text></text>
+			<outcome Probability="">
+				<text>You decide whatever data got stolen isn't worth the backlash that would be had from announcing the breach.</text>
+				<modifiers>
+					<modifier Resource="Reputation">5</modifier>
+					<modifier Resource="Legality">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Report the incident">
+			<text></text>
+			<outcome Probability="">
+				<text>It's required by law to notify of a data breach. You would be a fool to try to hide it.</text>
+				<modifiers>
+					<modifier Resource="Reputation">-5</modifier>
+					<modifier Resource="Legality">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Charitable Acts" Scene="5">
+		<text>One of your PR representatives has made a big statement about donating to a local charity without clearing it with the higher-ups. The people are impressed, but do you have the money to do it?</text>
+		<option Name="Find the funds">
+			<text></text>
+			<outcome Probability="">
+				<text>It might not be in the budget, but a promise is a promise and charitable donations do come with perks.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+					<modifier Resource="Reputation">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Retract the statement">
+			<text></text>
+			<outcome Probability="">
+				<text>As much as you might like to make the donation, there's simply not enough money.</text>
+				<modifiers>
+					<modifier Resource="Reputation">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="For the Community" Scene="5">
+		<text>Your head of PR had the idea of funding a new community center for the town your HQ is located in. It could foster a lot of good will with the people, but everything comes with a price.</text>
+		<option Name="Spare no expense">
+			<text></text>
+			<outcome Probability="">
+				<text>Sometimes there are things more important than money. It feels good to give back.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+					<modifier Resource="Reputation">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Partial funding">
+			<text></text>
+			<outcome Probability="">
+				<text>Some extra money was found leftover from a previous venture. The new center is not quite as extravagant, but the people are still happy.</text>
+				<modifiers>
+					<modifier Resource="Reputation">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="No funding">
+			<text></text>
+			<outcome Probability="">
+				<text>It's a lovely idea, but the budget can't make it work.</text>
+				<modifiers>
+					<modifier Resource="Reputation">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Outrage">
+		<text>Allegations of sexual assault towards one of the higher-ups in the company have been circulating in the local news. While there have been no complaints from within the company, it scene= opt name= outcome text=t be good for the company's image.</text>
+		<option Name="Wait for a proper investigation">
+			<text></text>
+			<outcome Probability="0.7">
+				<text>After a formal investigation, the allegations were declared unfounded without any actual evidence.</text>
+				<modifiers>
+					<modifier Resource="Revenue">5</modifier>
+				</modifiers>
+			</outcome>
+			<outcome Probability="0.3">
+				<text>After a formal investigation, the allegations were found to have some merit leading to his arrest and eventual trial. The public outrage only got worse with the company being seen as defending a predator.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+					<modifier Resource="Reputation">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Field Trip" Scene="5">
+		<text>Your head of PR has a new idea to foster some goodwill with the community by funding field trips for highschools in the area.</text>
+		<option Name="We've got the money">
+			<text></text>
+			<outcome Probability="">
+				<text>You decide it sounds like a great idea and approve of the project.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+					<modifier Resource="Reputation">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Too costly">
+			<text></text>
+			<outcome Probability="">
+				<text>You decide there's not enough in the budget to warrant such an expense.</text>
+				<modifiers>
+					<modifier Resource="Reputation">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Politically Correct" Scene="5">
+		<text>Information has leaked about a series of campaign donations made by a high-ranking official of the company to a few unsavory politicians. Someone's political affiliation is a personal matter, but an official statement from the company may help avoid bad press.</text>
+		<option Name="”His actions don” outcome text=' mod id= diff= mod id= diff= opt name= outcome text=' mod id= diff= mod id= diff= event name= text='' scene= opt name= outcome prob= text= mod id= diff= outcome prob= text= mod id= diff= mod id= diff= opt name= outcome text=' mod id= diff= event name= text=' scene= opt name= outcome text= mod id= diff= mod id= diff= opt name= outcome text=''s not what this company stands for.">
+			<text></text>
+		</option>
+	</event>
+	<event Name="Clickbait Journalism" Scene="5">
+		<text>A journalist wants to interview you about the state of the company and your plans going forward, but you've heard from a reliable source that this journalist is known for sensational articles that frame things wildly out of context.</text>
+		<option Name="Take the interview">
+			<text></text>
+			<outcome Probability="0.7">
+				<text>You're very careful about what you say during the interview leaving no chance for your words to be twisted.</text>
+				<modifiers>
+					<modifier Resource="Reputation">5</modifier>
+				</modifiers>
+			</outcome>
+			<outcome Probability="0.3">
+				<text>You thought the interview went great until the next day's headline shows just how skilled at twisting the narrative they really are.</text>
+				<modifiers>
+					<modifier Resource="Reputation diff= mod id= diff= opt name= outcome text=' mod id= diff= event name= text=' scene= opt name= outcome text=s not worth it to treat customers poorly."></modifier>
+					<modifier Resource="Revenue">-5</modifier>
+					<modifier Resource="Reputation">5</modifier>
+					<modifier Resource="Legality">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="It's worth the risk">
+			<text></text>
+			<outcome Probability="">
+				<text>You let him know that you will take a look at costs and see what you can do to bring them down, provided that “some investors” hold up their end of the deal.</text>
+				<modifiers>
+					<modifier Resource="Reputation">-5</modifier>
+					<modifier Resource="">-5</modifier>
+					<modifier Resource="Revenue">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name="Some helpful pointers" Scene="6">
+		<text>While having lunch with Zeke, he offers to give you some investing pointers that can help you make it big in no time. He suggests that you start by investing in certain companies which may be considered objectionable, and also mentions that he has a friend or two that may be able to help you out by sharing information a little earlier than other people would learn.</text>
+		<option Name="A bit of insider information can't hurt">
+			<text></text>
+			<outcome Probability="">
+				<text>You feel like Zeke is right about making quick money and start looking at some of these companies you can invest in. You welcome any tips that you can get, so you reach out to Zeke's friends for tips.</text>
+				<modifiers>
+					<modifier Resource="Reputation">-5</modifier>
+					<modifier Resource="Legality">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="Tobacco and stuff equals bad">
+			<text></text>
+			<outcome Probability="">
+				<text>You thank him for his willingness to share these tips, but your concerns about the morality of the situation are too great (to speak nothing of your feelings towards the legality of these tips).</text>
+				<modifiers>
+					<modifier Resource="Reputation">5</modifier>
+					<modifier Resource="">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+	<event Name=" text=‘Your latest construction project has cost far less than expected. The contractor suggests using the surplus to add an employee lounge to the building, but you could also hold onto it for other uses. What will you do?" Scene="7">
+		<text></text>
+		<option Name=" outcome text=' mod id= diff= opt name= outcome text= mod id= diff= mod id= diff= event name= text= scene= opt name= outcome text=' mod id= diff= mod id= diff= opt name= outcome text='' mod id= diff= event name= text=' scene= opt name= outcome text=' mod id= diff= opt name= outcome text=' mod id= diff= mod id= diff= event name= text= scene= opt name= outcome text= mod id= diff= mod id= diff= opt name= outcome text= mod id= diff= event name= text='' scene= opt name= outcome text= mod id= diff= mod id= diff= opt name= outcome prob= text=' mod id= diff= outcome prob= text= mod id= diff= mod id= diff= event name= text= scene= opt name= outcome prob= text= mod id= diff= outcome prob= text=t be avoided.">
+			<text></text>
+		</option>
+		<option Name="Demolish the building and build new">
+			<text></text>
+			<outcome Probability="">
+				<text>It's not worth the extra trouble of trying to save the building. A new construction will be best for the future.</text>
+				<modifiers>
+					<modifier Resource="Revenue">-5</modifier>
+					<modifier Resource="Morale">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+</events>

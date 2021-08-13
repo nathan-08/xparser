@@ -1,0 +1,25 @@
+<events>
+	<event Name="testing escape sequence: '" Scene="3">
+		<text>Would you like to outsource developers from overseas?</text>
+		<option Name="Yes">
+			<text></text>
+			<outcome Probability="">
+				<text>Yes</text>
+				<modifiers>
+					<modifier Resource="Employee Morale">-5</modifier>
+					<modifier Resource="Revenue">5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+		<option Name="No">
+			<text></text>
+			<outcome Probability="">
+				<text>No</text>
+				<modifiers>
+					<modifier Resource="Employee Morale">5</modifier>
+					<modifier Resource="Revenue">-5</modifier>
+				</modifiers>
+			</outcome>
+		</option>
+	</event>
+</events>

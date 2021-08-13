@@ -43,9 +43,13 @@ class Event:
 def starts_with(line, word):
     return word in line and line.index(word) == 0
 
+x = 0
 def parse_string(f, line, strOpen=False):
     result = ''
     escape_flag = False
+    global x
+    x += 1
+    print(x)
     for ch in line:
         if escape_flag:
             result += ch
